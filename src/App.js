@@ -39,8 +39,8 @@ function App() {
       email,
       password,
       age,
-      street: `${number}${name}`,
-      name: `${first}${last}`,
+      street: `${number} ${name}`,
+      name: `${first} ${last}`,
     };
     setPerson(newPerson);
     setLoading(false);
@@ -53,7 +53,11 @@ function App() {
   }, []);
 
   const handleValue = (e) => {
-    console.log(e.target);
+    if (e.target.classList.contains('icon')) {
+      const newValue = e.target.dataset.label;
+      setTitle(newValue);
+      setValue(person[newValue]);
+    }
   };
 
   return (
